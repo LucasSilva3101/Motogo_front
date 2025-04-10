@@ -2,16 +2,16 @@ export interface SaveClientRequest {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }
 
 export interface UpdateClientRequest {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }
 
 export interface SaveClientResponse {
@@ -19,8 +19,8 @@ export interface SaveClientResponse {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }
 
 export interface updateClientResponse {
@@ -28,8 +28,8 @@ export interface updateClientResponse {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }
 
 export interface ListClientResponse {
@@ -37,8 +37,8 @@ export interface ListClientResponse {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }
 
 export interface DetailClientResponse {
@@ -46,6 +46,6 @@ export interface DetailClientResponse {
   nome: string
   email: string
   telefone: string
-  endereço: string
-  dataCadastro: string
+  endereco: string
+  dataNasc: string
 }

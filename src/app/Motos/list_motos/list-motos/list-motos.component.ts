@@ -6,7 +6,7 @@ import { SERVICES_TOKEN } from 'src/app/Services/api-client/service.token';
 @Component({
   selector: 'app-list-motos',
   templateUrl: './list-motos.component.html',
-  styleUrls: ['./list-motos.component.sass'],
+  styleUrls: ['./list-motos.component.scss'],
   providers: [
     {provide: SERVICES_TOKEN.HTTP.MOTOS, useClass: MotosService}
   ]

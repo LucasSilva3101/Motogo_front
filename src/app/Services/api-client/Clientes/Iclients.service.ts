@@ -1,10 +1,14 @@
 import { Observable } from "rxjs";
-import { SaveClientRequest } from "./clients.models";
+import { DetailClientResponse, ListClientResponse, SaveClientRequest, UpdateClientRequest, updateClientResponse } from "./clients.models";
 
 export interface IClientService {
   save(request: SaveClientRequest): Observable<SaveClientRequest>
 
-  List(request: SaveClientRequest): Observable<SaveClientRequest>
+  update(id: number, request: UpdateClientRequest): Observable<updateClientResponse>
 
-  Delete(request: SaveClientRequest): Observable<SaveClientRequest>
+  delete(id: number): Observable<void>
+
+  list(): Observable<ListClientResponse[]>
+
+  findById(id: number): Observable<DetailClientResponse>
 }

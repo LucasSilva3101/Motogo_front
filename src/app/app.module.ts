@@ -10,6 +10,7 @@ import { ListClientesComponent } from './Clientes/list_clientes/list-clientes/li
 import { EditClientesComponent } from './Clientes/edit_clientes/edit-clientes/edit-clientes.component';
 import { ListMotosComponent } from './Motos/list_motos/list-motos/list-motos.component';
 import { EditMotosComponent } from './Motos/edit_motos/edit-motos/edit-motos.component';
+import { ClientesFormComponent } from './Clientes/components/clientes-form/clientes-form.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { EditMotosComponent } from './Motos/edit_motos/edit-motos/edit-motos.com
     ListClientesComponent,
     EditClientesComponent,
     ListMotosComponent,
-    EditMotosComponent
+    EditMotosComponent,
+    ClientesFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    ClientesFormComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })
