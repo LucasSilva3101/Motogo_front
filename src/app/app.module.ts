@@ -20,8 +20,7 @@ import { ClientesFormComponent } from './Clientes/components/clientes-form/clien
     ListClientesComponent,
     EditClientesComponent,
     ListMotosComponent,
-    EditMotosComponent,
-    ClientesFormComponent
+    EditMotosComponent
   ],
   imports: [
     BrowserModule,

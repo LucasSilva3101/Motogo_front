@@ -1,6 +1,7 @@
 import { InjectionToken } from "@angular/core";
-import { IMotoService } from "./Motos/Imotos.service";
-import { IClientService } from "./Clientes/Iclients.service";
+import { IClientService } from "./api-client/Clientes/Iclients.service";
+import { IMotoService } from "./api-client/Motos/Imotos.service";
+
 
 export const SERVICES_TOKEN = {
   HTTP: {

@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { IMotoService } from 'src/app/Services/api-client/Motos/Imotos.service';
 import { MotosService } from 'src/app/Services/api-client/Motos/motos.service';
-import { SERVICES_TOKEN } from 'src/app/Services/api-client/service.token';
+import { SERVICES_TOKEN } from 'src/app/Services/service.token';
+
 
 @Component({
   selector: 'app-new-motos',
