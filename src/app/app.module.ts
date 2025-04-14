@@ -12,10 +12,20 @@ import { ListClientsComponent } from './Clients/list_clients/list-clientes/list-
 import { NewClientsComponent } from './Clients/new_clients/new-clientes/new-clients.component';
 import { ClientsFormComponent } from './Clients/components/clients-form/clients-form.component';
 
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NewClientsComponent,
     NewMotosComponent,
     ListClientsComponent,
     EditClientsComponent,
@@ -26,8 +36,17 @@ import { ClientsFormComponent } from './Clients/components/clients-form/clients-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ClientsFormComponent
-],
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatSnackBarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

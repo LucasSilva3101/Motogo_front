@@ -1,6 +1,7 @@
 import { InjectionToken } from "@angular/core";
 import { IMotoService } from "./api-client/Motos/Imotos.service";
 import { IClientService } from "./api-client/clients/Iclients.service";
+import { ISnackbarManagerService } from "./isnackbar-manager.service";
 
 
 export const SERVICES_TOKEN = {
@@ -8,5 +9,6 @@ export const SERVICES_TOKEN = {
     MOTOS: new InjectionToken<IMotoService>('SERVICES_TOKEN.HTTP.MOTOS'),
     CLIENTS: new InjectionToken<IClientService>('SERVICES_TOKEN.HTTP.CLIENTS'),
     //SCHEDULE: new InjectionToken<IMotoService>('SERVICES_TOKEN.HTTP.SCHEDULE'),
-  }
+  },
+  SNACKBAR: new InjectionToken<ISnackbarManagerService>('SERVICES_TOKEN.SNACKBAR'),
 }

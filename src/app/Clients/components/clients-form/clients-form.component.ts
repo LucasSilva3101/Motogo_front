@@ -4,7 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { NgxMaskDirective } from 'ngx-mask';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-clients-form',
@@ -13,9 +13,9 @@ import { NgxMaskDirective } from 'ngx-mask';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    NgxMaskDirective
+    CommonModule
   ],
-  templateUrl: './clients-form.component.html',
+  templateUrl:'./clients-form.component.html',
   styleUrls: ['./clients-form.component.scss'],
   standalone: true
 })
@@ -25,8 +25,11 @@ export class ClientsFormComponent {
 
   @Output() clientsSubmited = new EventEmitter<ClientModelForm>();
 
-  onSubmit(_: NgForm) {
-    this.clientsSubmited.emit(this.clients)
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.clientsSubmited.emit(this.clients);
+    }
   }
+
 
 }
