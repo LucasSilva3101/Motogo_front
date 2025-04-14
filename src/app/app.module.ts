@@ -22,6 +22,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CardHeaderComponent } from './Commons/components/card-header/card-header.component';
+import { MatCardModule } from '@angular/material/card';
+import { MenuBarComponent } from './Commons/components/menu-bar/menu-bar.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ListClientsComponent,
     EditClientsComponent,
     ListMotosComponent,
-    EditMotosComponent
+    EditMotosComponent,
+    CardHeaderComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatDialogModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
