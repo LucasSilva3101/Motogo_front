@@ -7,10 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewMotosComponent } from './Motos/new_motos/new-motos/new-motos.component';
 import { ListMotosComponent } from './Motos/list_motos/list-motos/list-motos.component';
 import { EditMotosComponent } from './Motos/edit_motos/edit-motos/edit-motos.component';
-import { EditClientsComponent } from './Clients/edit_clients/edit-clients/edit-clients.component';
-import { ListClientsComponent } from './Clients/list_clients/list-clientes/list-clients.component';
-import { NewClientsComponent } from './Clients/new_clients/new-clientes/new-clients.component';
-import { ClientsFormComponent } from './Clients/components/clients-form/clients-form.component';
 
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,8 +27,6 @@ import { MatMenuModule } from '@angular/material/menu';
   declarations: [
     AppComponent,
     NewMotosComponent,
-    ListClientsComponent,
-    EditClientsComponent,
     ListMotosComponent,
     EditMotosComponent,
     CardHeaderComponent,

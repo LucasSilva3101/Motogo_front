@@ -25,7 +25,7 @@
     }
 
     delete(id: number): Observable<void> {
-      return this.http.delete<void>(`${this.basePath}/api/clientes${id}`)
+      return this.http.delete<void>(`${this.basePath}/api/clientes/${id}`)
     }
 
     list(): Observable<ListClientResponse[]> {
@@ -33,6 +33,6 @@
     }
 
     findById(id: number): Observable<DetailClientResponse> {
-      return this.http.get<DetailClientResponse>(`${this.basePath}/api/clientes${id}`)
+      return this.http.get<DetailClientResponse>(`${this.basePath}/api/clientes/${id}`)
     }
   }

@@ -5,14 +5,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-yes-no-dialog',
-  imports: [MatButtonModule, MatDialogModule],  // Importações dos módulos necessários
-  templateUrl: './yes-no-dialog.component.html',  // Caminho do template
-  styleUrls: ['./yes-no-dialog.component.scss'], // Caminho do arquivo de estilo
+  imports: [MatButtonModule, MatDialogModule],
+  templateUrl: './yes-no-dialog.component.html',
+  styleUrls: ['./yes-no-dialog.component.scss'],
+  standalone: true
 })
 export class YesNoDialogComponent {
-  // A injeção de dados do diálogo através do MAT_DIALOG_DATA
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  // A variável 'data' será acessível dentro do template,
-  // permitindo passar qualquer informação (como título e conteúdo do diálogo)
 }
