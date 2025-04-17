@@ -1,0 +1,42 @@
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="container">
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field class="fil-col">
+        <mat-label>Nome</mat-label>
+        <input matInput name="modelo" id="modelo" #nameModel="ngModel" [(ngModel)]="motos.modelo" required>
+        <mat-error *ngIf="nameModel.errors?.['required']">Informe o modelo da moto</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field class="fil-col">
+      <mat-label>Marca</mat-label>
+      <input matInput name="marca" id="marca" #marcaModel="ngModel" [(ngModel)]="motos.marca" required>
+      <mat-error *ngIf="marcaModel.errors?.['required']">Informe a marca da moto</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field class="fil-col">
+      <mat-label>Preço por dia</mat-label>
+      <input matInput name="precoPorDia" id="precoPorDia" #precoPorDiaModel="ngModel" [(ngModel)]="motos.precoPorDia" required>
+      <mat-error *ngIf="precoPorDiaModel.errors?.['required']">Informe o preço da moto</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="col-6">
+    <mat-form-field class="fil-col">
+      <mat-label>Disponibilidade</mat-label>
+      <input matInput name="disponivel" id="disponivel" #disponivelModel="ngModel" [(ngModel)]="motos.disponivel" required>
+      <mat-error *ngIf="disponivelModel.errors?.['required']">Informe se a moto irá ficar disponivel para alugar</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <div class="col div-button">
+      <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">Salvar</button>
+    </div>
+  </div>
+</form>

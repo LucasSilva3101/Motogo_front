@@ -1,108 +1,104 @@
-// import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-// import { ScheduleCalendarComponent } from '../components/schedule-calendar/schedule-calendar.component';
-// import { IClientService } from '../../Services/api-client/clients/Iclients.service';
-// import { ClientsService } from '../../Services/api-client/clients/clients.service';
-// import { Subscription } from 'rxjs';
-// import {
-//   ClientScheduleAppointmentModel,
-//   SaveScheduleModel,
-//   ScheduleAppointementMonthModel,
-//   SelectClientModel,
-// } from '../schedule.models';
-// import { SaveScheduleRequest } from '../../services/api-client/schedules/schedule.models';
-// import { IScheduleService } from 'src/app/Services/api-client/schedules/ischedules.service';
-// import { SchedulesService } from 'src/app/Services/api-client/schedules/schedules.service';
-// import { SERVICES_TOKEN } from 'src/app/Services/service.token';
-// import { ISnackbarManagerService } from 'src/app/Services/isnackbar-manager.service';
-// import { SnackbarManagerService } from 'src/app/Services/snackbar-manager.service';
+import { Component, OnInit, OnDestroy, Inject } from "@angular/core";
+import { Subscription } from "rxjs";
+import { ClientsService } from "src/app/Services/api-client/clients/clients.service";
+import { IClientService } from "src/app/Services/api-client/clients/Iclients.service";
+import { IScheduleService } from "src/app/Services/api-client/schedules/ischedules.service";
+import { SaveScheduleRequest } from "src/app/Services/api-client/schedules/schedule.models";
+import { SchedulesService } from "src/app/Services/api-client/schedules/schedules.service";
+import { ISnackbarManagerService } from "src/app/Services/isnackbar-manager.service";
+import { SERVICES_TOKEN } from "src/app/Services/service.token";
+import { SnackbarManagerService } from "src/app/Services/snackbar-manager.service";
+import { ScheduleCalendarComponent } from "../components/schedule-calendar/schedule-calendar.component";
+import { ScheduleAppointementMonthModel, SelectClientModel, ClientScheduleAppointmentModel, SaveScheduleModel } from "../components/schedule-calendar/schedule.models";
 
-// @Component({
-//   selector: 'app-schedules-month',
-//   imports: [ScheduleCalendarComponent],
-//   templateUrl: './schedules-month.component.html',
-//   styleUrl: './schedules-month.component.scss',
-//   providers: [
-//     { provide: SERVICES_TOKEN.HTTP.SCHEDULE, useClass: SchedulesService },
-//     { provide: SERVICES_TOKEN.HTTP.CLIENT, useClass: ClientsService },
-//     { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
-//   ],
-// })
-// export class SchedulesMonthComponent implements OnInit, OnDestroy {
-//   private subscriptions: Subscription[] = [];
-//   private selectedDate?: Date;
 
-//   monthSchedule: ScheduleAppointementMonthModel = {
-//     scheduledAppointments: [],
-//     year: 0,
-//     month: 0
-//   };
-//   clients: SelectClientModel[] = [];
+@Component({
+  selector: 'app-schedules-month',
+  imports: [ScheduleCalendarComponent],
+  templateUrl: './schedules-month.component.html',
+  styleUrls: ['./schedules-month.component.scss'],
+  providers: [
+    { provide: SERVICES_TOKEN.HTTP.SCHEDULE, useClass: SchedulesService },
+    { provide: SERVICES_TOKEN.HTTP.CLIENTS, useClass: ClientsService },
+    { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
+  ],
+  standalone: true,
+})
+export class SchedulesMonthComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
+  private selectedDate?: Date;
 
-//   constructor(
-//     @Inject(SERVICES_TOKEN.HTTP.SCHEDULE)
-//     private readonly httpService: IScheduleService,
-//     @Inject(SERVICES_TOKEN.HTTP.CLIENT)
-//     private readonly clientHttpService: IClientService,
-//     @Inject(SERVICES_TOKEN.SNACKBAR)
-//     private readonly snackbarManage: ISnackbarManagerService
-//   ) {}
+  monthSchedule: ScheduleAppointementMonthModel = {
+    scheduledAppointments: [],
+    year: 0,
+    month: 0
+  };
+  clients: SelectClientModel[] = [];
 
-//   ngOnInit(): void {
-//     this.fetchSchedules(new Date());
-//     this.subscriptions.push(
-//       this.clientHttpService.list().subscribe((data) => (this.clients = data))
-//     );
-//   }
+  constructor(
+    @Inject(SERVICES_TOKEN.HTTP.SCHEDULE)
+    private readonly httpService: IScheduleService,
+    @Inject(SERVICES_TOKEN.HTTP.CLIENTS)
+    private readonly clientHttpService: IClientService,
+    @Inject(SERVICES_TOKEN.SNACKBAR)
+    private readonly snackbarManage: ISnackbarManagerService
+  ) {}
 
-//   ngOnDestroy(): void {
-//     this.subscriptions.forEach((s) => s.unsubscribe());
-//   }
+  ngOnInit(): void {
+    this.fetchSchedules(new Date());
+    this.subscriptions.push(
+      this.clientHttpService.list().subscribe((data) => (this.clients = data))
+    );
+  }
 
-//   onDateChange(date: Date) {
-//     this.selectedDate = date;
-//     this.fetchSchedules(date);
-//   }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 
-//   onConfirmDelete(schedule: ClientScheduleAppointmentModel) {
-//     this.subscriptions.push(this.httpService.delete(schedule.id).subscribe());
-//   }
+  onDateChange(date: Date) {
+    this.selectedDate = date;
+    this.fetchSchedules(date);
+  }
 
-//   onScheduleClient(schedule: SaveScheduleModel) {
-//     if (schedule.startAt && schedule.endAt && schedule.clientId) {
-//       const request: SaveScheduleRequest = {
-//         startAt: schedule.startAt,
-//         endAt: schedule.endAt,
-//         clientId: schedule.clientId,
-//       };
-//       this.subscriptions.push(
-//         this.httpService.save(request).subscribe(() => {
-//           this.snackbarManage.show('Agendamento realizado com sucesso');
-//           if (this.selectedDate) {
-//             this.fetchSchedules(this.selectedDate);
-//           }
-//         })
-//       );
-//     }
-//   }
+  onConfirmDelete(schedule: ClientScheduleAppointmentModel) {
+    this.subscriptions.push(this.httpService.delete(schedule.id).subscribe());
+  }
 
-//   private fetchSchedules(currentDate: Date) {
-//     const year = currentDate.getFullYear();
-//     const month = currentDate.getMonth() + 1;
-//     this.subscriptions.push(
-//       this.httpService.listInMonth(year, month).subscribe((data) => {
-//         this.monthSchedule = data || { scheduledAppointments: [] }; // Garante que nunca seja undefined
-//         this.buildTable(); // Agora é seguro chamar
-//       })
-//     );
-//   }
+  onScheduleClient(schedule: SaveScheduleModel) {
+    if (schedule.startAt && schedule.endAt && schedule.clientId) {
+      const request: SaveScheduleRequest = {
+        startAt: schedule.startAt,
+        endAt: schedule.endAt,
+        clientId: schedule.clientId,
+      };
+      this.subscriptions.push(
+        this.httpService.save(request).subscribe(() => {
+          this.snackbarManage.show('Agendamento realizado com sucesso');
+          if (this.selectedDate) {
+            this.fetchSchedules(this.selectedDate);
+          }
+        })
+      );
+    }
+  }
 
-//   private buildTable() {
-//     if (!this.monthSchedule || !this.monthSchedule.scheduledAppointments) {
-//       console.warn("monthSchedule ainda não foi carregado.");
-//       return;
-//     }
+  private fetchSchedules(currentDate: Date) {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    this.subscriptions.push(
+      this.httpService.listInMonth(year, month).subscribe((data) => {
+        this.monthSchedule = data || { scheduledAppointments: [] };
+        this.buildTable();
+      })
+    );
+  }
 
-//     // Lógica de construção da tabela aqui...
-//     console.log("Tabela construída com os dados:", this.monthSchedule.scheduledAppointments);
-//   }
-// }
+  private buildTable() {
+    if (!this.monthSchedule || !this.monthSchedule.scheduledAppointments) {
+      console.warn("monthSchedule ainda não foi carregado.");
+      return;
+    }
+
+    console.log("Tabela construída com os dados:", this.monthSchedule.scheduledAppointments);
+  }
+}

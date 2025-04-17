@@ -22,15 +22,15 @@ import { CardHeaderComponent } from './Commons/components/card-header/card-heade
 import { MatCardModule } from '@angular/material/card';
 import { MenuBarComponent } from './Commons/components/menu-bar/menu-bar.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MotosFormComponent } from './Motos/components/motos-form/motos-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewMotosComponent,
     ListMotosComponent,
-    EditMotosComponent,
     CardHeaderComponent,
-    MenuBarComponent
+    MenuBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +48,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSnackBarModule,
     MatCardModule,
     MatMenuModule,
-    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
