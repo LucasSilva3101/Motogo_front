@@ -1,5 +1,5 @@
   import { Injectable } from "@angular/core"
-  import { environments } from "src/environments/environtes"
+  import { environment } from "src/environments/environment"
   import { HttpClient } from "@angular/common/http"
   import { DetailClientResponse, ListClientResponse, SaveClientRequest, SaveClientResponse, UpdateClientRequest, updateClientResponse } from "./clients.models"
   import { Observable } from "rxjs"
@@ -12,7 +12,7 @@
   })
   export class ClientsService implements IClientService {
 
-    private readonly basePath = environments.apiUrl
+    private readonly basePath = environment.apiUrl
 
     constructor(private http: HttpClient) { }
 

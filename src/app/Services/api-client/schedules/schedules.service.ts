@@ -3,7 +3,7 @@ import { IScheduleService } from './ischedules.service';
 import { Observable } from 'rxjs';
 import { SaveScheduleRequest, SaveScheduleResponse, ScheduleAppointmentMonthResponse } from './schedule.models';
 import { HttpClient } from '@angular/common/http';
-import { environments } from 'src/environments/environtes';
+import { environments } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

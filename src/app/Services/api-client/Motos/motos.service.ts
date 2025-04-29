@@ -3,14 +3,14 @@ import { IMotoService } from './Imotos.service';
 import { Observable } from 'rxjs';
 import { SaveMotoRequest, UpdateMotoRequest, ListMotoResponse, DetailMotoResponse, SaveMotoResponse, UpdateMotoResponse } from './motos.models';
 import { HttpClient } from '@angular/common/http';
-import { environments } from 'src/environments/environtes';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MotosService implements IMotoService {
 
-  private readonly basePath = environments.apiUrl
+  private readonly basePath = environment.apiUrl
 
   constructor(private http: HttpClient) { }
 
