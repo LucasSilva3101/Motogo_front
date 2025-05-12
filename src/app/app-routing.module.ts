@@ -7,6 +7,7 @@ import { ScheduleCalendarComponent } from './Schedules/components/schedule-calen
 import { EditMotosComponent } from './Motos/edit_motos/edit-motos/edit-motos.component';
 import { ListMotosComponent } from './Motos/list_motos/list-motos/list-motos.component';
 import { NewMotosComponent } from './Motos/new_motos/new-motos/new-motos.component';
+import { LandingPageComponent } from './Commons/components/landing-page/landing-page.component';
 
 const routes: Routes = [
   {
@@ -41,14 +42,17 @@ const routes: Routes = [
     component: ListMotosComponent,
     data: { title: 'Motos Cadastrados' },
   },
-
-
+  {
+    path: 'main',
+    component: LandingPageComponent,
+    data: { title: 'MotoGo' },
+  },
   {
     path: 'schedules/month',
     component: ScheduleCalendarComponent,
     data: { title: 'Agendamentos' },
   },
-  { path: '**', redirectTo: 'schedules/month' },
+  { path: '**', redirectTo: 'main' },
 ];
 
 @NgModule({

@@ -18,19 +18,21 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CardHeaderComponent } from './Commons/components/card-header/card-header.component';
 import { MatCardModule } from '@angular/material/card';
 import { MenuBarComponent } from './Commons/components/menu-bar/menu-bar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MotosFormComponent } from './Motos/components/motos-form/motos-form.component';
+import { LandingPageComponent } from './Commons/components/landing-page/landing-page.component';
+import { LoginPageComponent } from './Commons/components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewMotosComponent,
     ListMotosComponent,
-    CardHeaderComponent,
     MenuBarComponent,
+    LandingPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
